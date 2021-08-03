@@ -24,7 +24,6 @@ async function loginFormHandler(event) {
     }
 }
 
-
 // Create new user from signup form
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -52,5 +51,5 @@ async function signupFormHandler(event) {
     }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
