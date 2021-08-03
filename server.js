@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
+// use alter: true to add a table not delete anything
+// use force: true to delete everything 
+// looks at everything in models folder 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });

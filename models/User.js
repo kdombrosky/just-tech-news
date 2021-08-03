@@ -60,6 +60,7 @@ User.init(
                 return newUserData;
             },
             // set up beforeUpdate lifecycle "hook" functionality
+            // 10 = hashed 10 times 
             async beforeUpdate(updatedUserData) {
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
