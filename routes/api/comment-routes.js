@@ -2,15 +2,8 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 
 router.get('/', (req, res) => {
-    Comment.findAll({
-        attributes: [
-            'id', 
-            'comment_text', 
-            'user_id',
-            'created_at'
-        ]
-    })
-        .then(dbUserData => res.json(dbUserData))
+    Comment.findAll()
+        .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -36,12 +29,12 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbPostData => {
-        if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbCommentData => {
+        if (!dbCommentData) {
+        res.status(404).json({ message: 'No comment found with this id' });
         return;
         }
-        res.json(dbPostData);
+        res.json(dbCommentData);
     })
     .catch(err => {
         console.log(err);
